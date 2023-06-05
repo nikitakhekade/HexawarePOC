@@ -1,0 +1,55 @@
+<div class="d-grid gap-2 col-4 mx-auto container-fluid">
+  <form [formGroup]="authenticationForm"(ngSubmit)="handleAuthenticateSubmit()">
+   
+    <label class="form-label">Username</label>
+    <input
+    type="text"
+    class="form-control"
+    placeholder="Username"
+    formControlName="username"
+    [ngClass]="{
+      'is-invalid':
+      authenticationForm.get('username')?.touched &&
+      authenticationForm.get('username')?.invalid
+    }"
+    />
+    <div class="invalid-feedback">
+      <div>Username is required</div>
+    </div>
+    <label class="form-label">Password</label>
+    <input
+    type="password"
+    class="form-control"
+    placeholder="Password"
+    formControlName="password"
+    [ngClass]="{
+      'is-invalid':
+      authenticationForm.get('password')?.touched &&
+      authenticationForm.get('password')?.invalid
+    }"
+    />
+    <div class="invalid-feedback">
+      <div>Password is required</div>
+    </div>
+    <br>
+    <div class="alert alert-success" *ngIf="isAuthenticated ">Login Successful</div>
+    
+    <button
+    class="btn btn-outline-success"
+    type="submit"
+    [disabled]="!authenticationForm.valid"
+    routerLink="/authenticate"
+    style="margin-right: 20px;"
+    >
+    Sign In
+  </button>
+
+  <button
+    class="btn btn-outline-success"
+    type="reset"
+    (click)="resetTheForm"
+    >
+    Reset
+  </button>
+</form>
+</div>

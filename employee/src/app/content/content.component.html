@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <p>This app is about the authentication and registeration</p>
+  <h4>This a string interpolation</h4>
+  <p>Course : {{ course }}</p>
+  <h4>This a property binding</h4>
+  <input type="text" [value]="course" />
+  <br />
+  <br />
+  <h4>This a two way binding</h4>
+  <input type="text" [(ngModel)]="course" />
+  <br />
+  <br />
+  <h4>Custom property binding parent to child communication</h4>
+  <app-parent-to-child></app-parent-to-child>
+  <app-parent-to-child [age]="40"></app-parent-to-child>
+  <h4>Custom Event Binding child to parent communication</h4>
+  <app-child-to-parent (onReportGenerated)="handleReportGenerated($event)"></app-child-to-parent>
+  
+</div>

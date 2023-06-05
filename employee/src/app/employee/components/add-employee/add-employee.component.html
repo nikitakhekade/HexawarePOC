@@ -1,0 +1,121 @@
+<div class="container">
+  <form [formGroup]="employeeForm" (ngSubmit)="handleRegisterSubmit()">
+    <div class="text-primary text-opacity-75">
+      <h1 class="text-center">Registeration</h1>
+    </div>
+    <table class="table table-bordered table-striped text-center">
+      <tbody>
+        <tr>
+          <th>Name:</th>
+          <td>
+            <input class="form-control"
+              type="text"
+              placeholder="Enter Name"
+              formControlName="name"
+              [ngClass]="{
+                'is-invalid':
+                  employeeForm.get('name')?.touched &&
+                  employeeForm.get('name')?.invalid
+              }"
+            />
+            <div class="invalid-feedback">
+              <div>Name is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>
+            <input class="form-control"
+              type="email"
+              placeholder="Enter Email"
+              formControlName="email"
+              [ngClass]="{
+                'is-invalid':
+                  employeeForm.get('email')?.touched &&
+                  employeeForm.get('email')?.invalid
+              }"
+            />
+            <div class="invalid-feedback">
+              <div *ngIf="employeeForm.get('email')?.errors?.['required']">
+                Email is required
+              </div>
+              <div *ngIf="employeeForm.get('email')?.errors?.['email']">
+                Invalid Email
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Role:</th>
+          <td>
+            <input class="form-control"
+              type="text"
+              placeholder="Enter Role"
+              formControlName="role"
+              [ngClass]="{
+                'is-invalid':
+                  employeeForm.get('role')?.touched &&
+                  employeeForm.get('role')?.invalid
+              }"
+            />
+            <div class="invalid-feedback">
+              <div>Role is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Username:</th>
+          <td>
+            <input class="form-control"
+              type="text"
+              placeholder="Enter Username"
+              formControlName="username"
+              [ngClass]="{
+                'is-invalid':
+                  employeeForm.get('username')?.touched &&
+                  employeeForm.get('username')?.invalid
+              }"
+            />
+            <div class="invalid-feedback">
+              <div>Username is required</div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <th>Password:</th>
+          <td>
+            <input class="form-control"
+              type="password"
+              placeholder="Enter Password"
+              formControlName="password"
+              [ngClass]="{
+                'is-invalid':
+                  employeeForm.get('password')?.touched &&
+                  employeeForm.get('password')?.invalid
+              }"
+            />
+            <div class="invalid-feedback">
+              <div>Password is required</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alert alert-success" *ngIf="isRegistered">Registered Successfully</div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button
+        class="btn btn-outline-primary"
+        type="submit"
+        [disabled]="!employeeForm.valid"
+        routerLink="/employee/add"
+      >
+        Submit
+      </button> 
+      <a class="d-grid gap-2 col-4 mx-auto" routerLink="/employee/authenticate">
+        Click here to Sign In
+      </a>
+    </div>
+  </form>
+</div>
